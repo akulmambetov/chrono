@@ -2,18 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Models\Workspace;
-use Illuminate\Auth\Events\Registered;
+use App\Events\UserRegisteredEvent;
 
 class CreateWorkspaceListener
 {
-    public function handle(Registered $event)
+    public function handle(UserRegisteredEvent $event)
     {
-        Workspace::create(
-            [
-                'name' => 'Default Workspace',
-                'user_id' => $event->user->id
-            ]
-        );
+        $event->user->workspaces()->create(['name' => 'Default Workspace']);
     }
 }
