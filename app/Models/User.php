@@ -11,11 +11,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Sanctum\HasApiTokens;
+use Laravolt\Avatar\Avatar;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, HasMedia
 {
     use HasApiTokens;
+    use InteractsWithMedia;
     use HasFactory;
     use Notifiable;
     use HasRoles;
@@ -61,6 +66,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmailNotification);
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaCollection('avatar')
+            ->singleFile();
     }
 
     public function workspaces(): HasMany
