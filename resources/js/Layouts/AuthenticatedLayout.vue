@@ -6,7 +6,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import {Link} from '@inertiajs/vue3';
-
+import Sidebar from "@/Layouts/Partials/Sidebar.vue";
 const showingNavigationDropdown = ref(false);
 </script>
 
@@ -15,20 +15,13 @@ const showingNavigationDropdown = ref(false);
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
       <nav class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
         <!-- Primary Navigation Menu -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between h-16">
-            <div class="flex">
-              <!-- Logo -->
-              <div class="shrink-0 flex items-center">
-                <Link :href="route('dashboard')">
-                  <ApplicationLogo
-                    class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200"
-                  />
-                </Link>
-              </div>
+        <Sidebar></Sidebar>
 
+        <div class="px-4 sm:px-6 lg:px-8 border-b">
+          <div class="flex justify-start h-12 pl-60">
+            <div class="flex">
               <!-- Navigation Links -->
-              <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+              <div class="hidden space-x-8 sm:-my-px sm:flex">
                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                   Dashboard
                 </NavLink>
@@ -133,7 +126,7 @@ const showingNavigationDropdown = ref(false);
       </header>
 
       <!-- Page Content -->
-      <main>
+      <main class="pl-60">
         <slot/>
       </main>
     </div>
