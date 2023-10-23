@@ -23,13 +23,8 @@ const emitSideBar = () => {
 </script>
 
 <template>
-  <Transition
-    enter-from-class="opacity-0 translate-x-4"
-    enter-to-class="opacity-100"
-    leave-from-class="opacity-100 translate-x-4"
-    leave-to-class="opacity-0"
-  >
-    <div v-show="showSideBar" class="max-w-7xl w-64 bg-gray-50 border-r h-full fixed left-0 flex flex-col">
+  <Transition name="slide">
+    <div v-show="showSideBar" class="max-w-7xl w-64 bg-gray-50 border-r h-full absolute left-0 flex flex-col">
       <div class="px-4 h-12 flex justify-between items-center">
         <div class="rounded cursor-pointer p-1 hover:bg-gray-300 content-center">
           <Link :href="route('home')">
@@ -53,3 +48,20 @@ const emitSideBar = () => {
     </div>
   </Transition>
 </template>
+
+<style scoped>
+.slide-enter {
+  transform: translateX(-300px);
+}
+
+.slide-enter-active {
+  transition: all .3s ease-in;
+}
+
+.slide-leave-active {
+  transition: all .3s ease-in;
+}
+.slide-leave-to {
+  transform: translateX(-300px);
+}
+</style>

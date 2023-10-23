@@ -19,8 +19,8 @@ const form = useForm({
   <Head title="Create Workspace"/>
 
   <AuthenticatedLayout>
-    <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-4">
+      <div class="max-w-7xl sm:px-6 lg:px-8">
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
           <form @submit.prevent="form.post(route('workspaces.store'))" class="px-6 py-6">
             <div>
