@@ -8,6 +8,9 @@ class CreateWorkspaceListener
 {
     public function handle(UserRegisteredEvent $event)
     {
-        $event->user->workspaces()->create(['name' => 'Default Workspace']);
+        $event->user->workspaces()->create([
+            'name' => 'Default Workspace',
+            'default' => true
+        ]);
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Workspace extends Model
 {
-    protected $fillable = ['name', 'user_id'];
+    protected $fillable = ['name', 'user_id', 'default'];
 
     public function scopeMine(Builder $query): Builder
     {
