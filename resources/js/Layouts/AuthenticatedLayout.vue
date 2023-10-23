@@ -26,7 +26,11 @@ const closeSideBar = () => {
         <Sidebar :showSideBar="showSideBar" @close="closeSideBar"></Sidebar>
 
         <div class="border-b">
-          <div class="text-xs text-gray-400 flex justify-start px-4 py-6 mx-4 items-center content-center h-12" :class="{'pl-64': showSideBar}">
+          <div class="text-xs text-gray-400 flex items-center content-center h-12"
+               :class="{
+                'pl-64': showSideBar,
+                'ml-4': showSideBar
+                }">
             <div class="flex">
               <div class="m-1 p-2 group rounded cursor-pointer hover:bg-gray-300 flex items-center"
                    v-if="!showSideBar"
