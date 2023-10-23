@@ -16,6 +16,11 @@ class Workspace extends Model
         return $query->where('user_id', auth()->id());
     }
 
+    public function scopeDefault(Builder $query): Builder
+    {
+        return $query->where('default', true);
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
