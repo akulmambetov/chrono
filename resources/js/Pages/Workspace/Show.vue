@@ -14,6 +14,11 @@ defineProps({
   <Head :title="workspace.name"/>
 
   <AuthenticatedLayout>
+    <template #breadcrumbs>
+      <div>Workspaces </div>
+      <div class="flex fill-gray-400"><box-icon name='chevron-right'></box-icon></div>
+      <div>{{ workspace.name }}</div>
+    </template>
     <h2>
       {{ workspace.name }}
     </h2>

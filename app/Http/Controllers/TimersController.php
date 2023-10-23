@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Timer;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TimersController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-
+        return Inertia::render('Timer/Index');
     }
 
     public function create()
