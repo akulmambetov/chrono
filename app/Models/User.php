@@ -74,6 +74,11 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
             ->singleFile();
     }
 
+    public function timers(): HasMany
+    {
+        return $this->hasMany(Timer::class, 'user_id');
+    }
+
     public function workspaces(): HasMany
     {
         return $this->hasMany(Workspace::class, 'user_id');
