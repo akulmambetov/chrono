@@ -8,12 +8,27 @@
 </script>
 
 <template>
-  <div class="flex flex-col justify-center gap-1">
-    <div v-if="defaultWorkspace" class="bg-white cursor-pointer hover:bg-gray-50 rounded py-1 mx-6 text-gray-900 border text-center text-sm">
-      <Link :href="route('workspaces.show', defaultWorkspace)">{{ defaultWorkspace.name }}</Link>
-    </div>
-    <div class="bg-white hover:bg-gray-50 cursor-pointer rounded py-1 mx-6 text-gray-900 border text-center text-sm">
-      <Link :href="route('workspaces.create')">Add new</Link>
-    </div>
+  <div class="flex flex-col justify-center gap-3 mt-6">
+    <Link v-if="defaultWorkspace" class="flex flex-row hover:text-blue-500 items-center cursor-pointer hover:bg-gray-300 rounded-md p-2 mx-6 text-gray-900 text-sm"
+          :href="route('workspaces.show', defaultWorkspace)">
+      <box-icon class="mr-3" type='solid' name='grid'></box-icon>
+      {{ defaultWorkspace.name }}
+    </Link>
+
+    <Link class="flex flex-row hover:text-blue-500 items-center cursor-pointer hover:bg-gray-300 rounded-md p-2 mx-6 text-gray-900 text-sm"
+          :href="route('workspaces.create')">
+      <box-icon class="mr-3" type='solid' name='time'></box-icon>
+      Timer
+    </Link>
+
+    <Link class="flex flex-row hover:text-blue-500 items-center cursor-pointer hover:bg-gray-300 rounded-md p-2 mx-6 text-gray-900 text-sm">
+      <box-icon class='mr-3' name='user-rectangle' type='solid' ></box-icon>
+      Users
+    </Link>
+
+    <Link class="flex flex-row hover:text-blue-500 items-center cursor-pointer hover:bg-gray-300 rounded-md p-2 mx-6 text-gray-900 text-sm">
+      <box-icon class='mr-3' name='report' type='solid' ></box-icon>
+      Reports
+    </Link>
   </div>
 </template>

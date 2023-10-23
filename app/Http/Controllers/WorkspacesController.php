@@ -37,7 +37,9 @@ class WorkspacesController extends Controller
 
     public function show(Workspace $workspace)
     {
-        return Inertia::render('Workspace/Show', $workspace);
+        return Inertia::render('Workspace/Show', [
+            'workspace' => $workspace
+        ]);
     }
 
     public function edit(Workspace $workspace)

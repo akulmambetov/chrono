@@ -142,7 +142,11 @@ const closeSideBar = () => {
 
       <!-- Page Content -->
       <main :class="{'pl-60': showSideBar}">
-        <slot/>
+        <div class="py-4">
+          <div class="max-w-7xl sm:px-6 lg:px-8 space-y-6">
+            <slot/>
+          </div>
+        </div>
       </main>
     </div>
   </div>
