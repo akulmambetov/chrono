@@ -13,6 +13,7 @@ return new class extends Migration {
                 $table->id();
                 $table->string('name');
                 $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+                $table->boolean('default')->default(false);
                 $table->softDeletes();
                 $table->timestamps();
             }
