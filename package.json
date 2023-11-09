@@ -19,6 +19,6 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
-        "boxicons": "^2.1.4"
+        "@heroicons/vue": "^2.0.18"
     }
 }

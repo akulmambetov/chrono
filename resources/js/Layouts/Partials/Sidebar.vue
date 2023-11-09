@@ -5,6 +5,8 @@ import {Link, usePage} from "@inertiajs/vue3";
 import {computed, ref} from 'vue'
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
+import { UserCircleIcon, ArrowLeftOnRectangleIcon } from "@heroicons/vue/24/outline";
+
 const page = usePage()
 
 const user = computed(() => page.props.auth.user)
@@ -27,24 +29,23 @@ const emitSideBar = () => {
   <Transition name="slide">
     <div v-show="showSideBar" class="max-w-7xl w-64 bg-gray-50 border-r h-full fixed left-0 flex flex-col">
       <div class="px-4 h-12 flex justify-between items-center">
-        <div class="rounded cursor-pointer p-1 hover:bg-gray-300 content-center">
+        <div class="rounded cursor-pointer p-2 hover:bg-gray-300 content-center">
           <Link :href="route('home')">
-            <ApplicationLogo class="h-6"></ApplicationLogo>
+            <ApplicationLogo class="h-5"></ApplicationLogo>
           </Link>
         </div>
         <div class="flex gap-3">
-          <div class="group rounded cursor-pointer p-1 hover:bg-gray-300 flex items-center"
+          <div class="group rounded cursor-pointer p-2 hover:bg-gray-300 flex items-center"
                @click="emitSideBar">
-            <box-icon class="fill-gray-500 group-hover:fill-gray-950" name='dock-left'></box-icon>
-
+            <ArrowLeftOnRectangleIcon class="h-5 text-gray-500 group-hover:text-gray-950"/>
           </div>
 
 
           <div>
             <Dropdown width="36">
               <template #trigger>
-                <button class="flex items-center group rounded cursor-pointer p-1 hover:bg-gray-300">
-                  <box-icon class="fill-gray-500 group-hover:fill-gray-950" name='user'></box-icon>
+                <button class="flex items-center group rounded cursor-pointer p-2 hover:bg-gray-300">
+                  <UserCircleIcon class="h-5 text-gray-500 group-hover:text-gray-950" />
                 </button>
               </template>
 

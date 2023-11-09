@@ -7,6 +7,7 @@ import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import {Link} from '@inertiajs/vue3';
 import Sidebar from "@/Layouts/Partials/Sidebar.vue";
+import {ArrowRightOnRectangleIcon} from '@heroicons/vue/24/solid';
 
 const showingNavigationDropdown = ref(false);
 
@@ -35,7 +36,7 @@ const closeSideBar = () => {
               <div class="m-1 p-2 group rounded cursor-pointer hover:bg-gray-300 flex items-center"
                    v-if="!showSideBar"
                    @click="showSideBar = !showSideBar">
-                <box-icon class="fill-gray-500 group-hover:fill-gray-950" name='dock-left'></box-icon>
+                <ArrowRightOnRectangleIcon class="h-5 fill-gray-500 group-hover:fill-gray-950"/>
               </div>
             </div>
 

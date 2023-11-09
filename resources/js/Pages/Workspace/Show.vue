@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import {Head, Link, useForm, usePage} from '@inertiajs/vue3';
+import {ChevronRightIcon} from '@heroicons/vue/24/solid';
 
 defineProps({
   workspace: {
@@ -16,7 +17,7 @@ defineProps({
   <AuthenticatedLayout>
     <template #breadcrumbs>
       <div>Workspaces </div>
-      <div class="flex fill-gray-400"><box-icon name='chevron-right'></box-icon></div>
+      <ChevronRightIcon class="h-3 text-gray-500"/>
       <div>{{ workspace.name }}</div>
     </template>
     <h2>

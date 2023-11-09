@@ -4,6 +4,7 @@ import DeleteUserForm from './Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
 import {Head} from '@inertiajs/vue3';
+import {ChevronRightIcon} from '@heroicons/vue/24/solid';
 
 defineProps({
   mustVerifyEmail: {
@@ -21,9 +22,7 @@ defineProps({
   <AuthenticatedLayout>
     <template #breadcrumbs>
       <div>Profile</div>
-      <div class="flex fill-gray-400">
-        <box-icon name='chevron-right'></box-icon>
-      </div>
+      <ChevronRightIcon class="h-3 text-gray-500"/>
       <div>{{ $page.props.auth.user.name }}</div>
     </template>
 

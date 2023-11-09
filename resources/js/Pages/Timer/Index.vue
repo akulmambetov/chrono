@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import {Head} from "@inertiajs/vue3";
+import {ChevronRightIcon} from '@heroicons/vue/24/solid';
 
 </script>
 
@@ -9,7 +10,7 @@ import {Head} from "@inertiajs/vue3";
   <AuthenticatedLayout>
     <template #breadcrumbs>
       <div>{{ $page.props.auth.default_workspace.name }} </div>
-      <div class="flex fill-gray-400"><box-icon name='chevron-right'></box-icon></div>
+      <ChevronRightIcon class="h-3 text-gray-500"/>
       <div>Timer</div>
     </template>
 
