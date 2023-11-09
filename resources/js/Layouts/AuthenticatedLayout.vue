@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue';
+import {ref, onMounted, nextTick, onUnmounted} from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
@@ -16,6 +16,14 @@ const showSideBar = ref(true);
 const closeSideBar = () => {
   showSideBar.value = false;
 };
+
+const checkSize = () => {
+  showSideBar.value = window.innerWidth > 768;
+};
+
+onMounted(() => window.addEventListener('resize', checkSize));
+onUnmounted(() => window.removeEventListener('resize', checkSize));
+
 
 </script>
 
@@ -41,7 +49,12 @@ const closeSideBar = () => {
             </div>
 
             <slot name="breadcrumbs">
+
             </slot>
+
+            <div class="absolute right-0 mr-5 md:hidden">
+              <h2>Profile</h2>
+            </div>
           </div>
         </div>
       </nav>
