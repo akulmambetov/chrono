@@ -26,8 +26,8 @@ const emitSideBar = () => {
 </script>
 
 <template>
-  <Transition name="slide">
-    <div v-show="showSideBar" class="max-w-7xl w-64 bg-gray-50 border-r h-full fixed left-0 flex flex-col">
+  <Transition name="slide-fade">
+    <div v-show="showSideBar" class="max-w-7xl w-64 bg-gray-200 border-r h-full fixed left-0 flex flex-col">
       <div class="px-4 h-12 flex justify-between items-center">
         <div class="rounded cursor-pointer p-2 hover:bg-gray-300 content-center">
           <Link :href="route('home')">
@@ -66,18 +66,17 @@ const emitSideBar = () => {
 </template>
 
 <style scoped>
-.slide-enter {
-  transform: translateX(-300px);
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
 }
 
-.slide-enter-active {
-  transition: all .3s ease-in;
+.slide-fade-leave-active {
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.slide-leave-active {
-  transition: all .3s ease-in;
-}
-.slide-leave-to {
-  transform: translateX(-300px);
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-256px);
+  opacity: 0;
 }
 </style>
