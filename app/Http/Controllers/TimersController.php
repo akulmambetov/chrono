@@ -8,12 +8,16 @@ use Inertia\Inertia;
 
 class TimersController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return Inertia::render('Timer/Index');
+        $timers = Timer::with('workspace')
+            ->associated()
+            ->get();
+
+        return Inertia::render('Timer/Index', compact('timers'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
     }
 

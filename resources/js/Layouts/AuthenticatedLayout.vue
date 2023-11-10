@@ -1,11 +1,5 @@
 <script setup>
-import {ref, onMounted, nextTick, onUnmounted} from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import {Link} from '@inertiajs/vue3';
+import {onMounted, onUnmounted, ref} from 'vue';
 import Sidebar from "@/Layouts/Partials/Sidebar.vue";
 import {ArrowRightOnRectangleIcon} from '@heroicons/vue/24/solid';
 
@@ -60,13 +54,13 @@ onUnmounted(() => window.removeEventListener('resize', checkSize));
       </nav>
 
       <!-- Page Content -->
-      <main :class="{'pl-64': showSideBar}">
-        <div class="py-4 px-4">
-          <div class="max-w-7xl space-y-6">
-            <slot/>
+        <main :class="{'pl-64': showSideBar}">
+          <div class="py-4 px-4">
+            <div class="max-w-7xl space-y-6">
+              <slot/>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
     </div>
   </div>
 </template>
