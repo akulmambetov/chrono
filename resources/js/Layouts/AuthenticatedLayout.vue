@@ -54,9 +54,9 @@ onUnmounted(() => window.removeEventListener('resize', checkSize));
       </nav>
 
       <!-- Page Content -->
-        <main :class="{'pl-64': showSideBar}">
+        <main :class="{'pl-64': showSideBar}" class="ease-in-out duration-300">
           <div class="py-4 px-4">
-            <div class="max-w-7xl space-y-6">
+            <div class="max-w-7xl space-y-6 md:container mx-auto">
               <slot/>
             </div>
           </div>
