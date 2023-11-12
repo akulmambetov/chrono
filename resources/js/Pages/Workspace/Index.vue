@@ -57,7 +57,8 @@ const closeModal = () => {
               {{ workspace.name }}
             </th>
             <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              <span class="p-2 bg-green-500 rounded-md text-white">{{ workspace.default ? 'Default' : 'NO' }}</span>
+              <span class="p-1 bg-red-500 rounded text-white"
+              :class="{'bg-green-500': workspace.default}">{{ workspace.default ? 'Yes' : 'No' }}</span>
             </th>
             <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               Edit
