@@ -30,39 +30,41 @@ const closeModal = () => {
   <Head title="Workspaces"/>
 
   <AuthenticatedLayout>
-    <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="p-6 text-gray-900 dark:text-gray-100">
+    <template #breadcrumbs>
+      <div>Workspaces</div>
+    </template>
 
-            <Link :href="route('workspaces.create')">
-              <PrimaryButton>
-                Create new Workspace
-              </PrimaryButton>
-            </Link>
+    <div>
 
-            <TableLayout class="mt-6">
-              <template #head>
-                <tr>
-                  <th class="px-6 py-3">Name</th>
-                  <th class="px-6 py-3">Action</th>
-                </tr>
-              </template>
+      <Link :href="route('workspaces.create')">
+        <PrimaryButton>
+          Create new Workspace
+        </PrimaryButton>
+      </Link>
 
-              <template #body>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="workspace in workspaces">
-                  <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ workspace.name }}
-                  </th>
-                  <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+      <TableLayout class="mt-6">
+        <template #head>
+          <tr>
+            <th class="px-6 py-3">Name</th>
+            <th class="px-6 py-3">Default</th>
+            <th class="px-6 py-3">Action</th>
+          </tr>
+        </template>
 
-                  </th>
-                </tr>
-              </template>
-            </TableLayout>
-          </div>
-        </div>
-      </div>
+        <template #body>
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="workspace in workspaces">
+            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              {{ workspace.name }}
+            </th>
+            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <span class="p-2 bg-green-500 rounded-md text-white">{{ workspace.default ? 'Default' : 'NO' }}</span>
+            </th>
+            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              Edit
+            </th>
+          </tr>
+        </template>
+      </TableLayout>
     </div>
   </AuthenticatedLayout>
 </template>
