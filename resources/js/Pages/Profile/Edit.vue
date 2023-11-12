@@ -27,24 +27,18 @@ defineProps({
     </template>
 
 
-    <div class="py-4">
-      <div class="max-w-7xl sm:px-6 lg:px-8 space-y-6">
-        <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-          <UpdateProfileInformationForm
-            :must-verify-email="mustVerifyEmail"
-            :status="status"
-            class="max-w-xl"
-          />
-        </div>
+    <UpdateProfileInformationForm
+      :must-verify-email="mustVerifyEmail"
+      :status="status"
+      class="max-w-xl"
+    />
 
-        <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-          <UpdatePasswordForm class="max-w-xl"/>
-        </div>
+    <div class="border-b-2"></div>
 
-        <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-          <DeleteUserForm class="max-w-xl"/>
-        </div>
-      </div>
-    </div>
+    <UpdatePasswordForm class="max-w-xl"/>
+
+    <div class="border-b-2"></div>
+
+    <DeleteUserForm class="max-w-xl"/>
   </AuthenticatedLayout>
 </template>
