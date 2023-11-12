@@ -56,7 +56,7 @@ onUnmounted(() => window.removeEventListener('resize', checkSize));
       <!-- Page Content -->
         <main :class="{'pl-64': showSideBar}" class="ease-in-out duration-300">
           <div class="py-4 px-4">
-            <div class="max-w-7xl space-y-6 md:container mx-auto bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+            <div class="max-w-7xl space-y-6 md:container mx-auto bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-md p-6">
               <slot/>
             </div>
           </div>
