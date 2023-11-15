@@ -9,10 +9,7 @@ const form = useForm({
   title: null,
   started_at: null,
   stopped_at: null,
-  intervalId: null,
-  user_id: page.props.auth.user.id,
-  workspace_id: page.props.auth.default_workspace.id,
-  loaded: false
+  intervalId: null
 });
 
 const hours = ref(0);
@@ -64,9 +61,9 @@ const stop = () => {
 
   localStorage.clear();
 
-  form.post(route('timer.store'), {
-    onFinish: () => form.reset(),
-  });
+  form.post(route('timer.store'));
+
+  form.reset();
 }
 
 onBeforeMount(() => {
