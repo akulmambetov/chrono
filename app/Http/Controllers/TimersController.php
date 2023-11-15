@@ -26,6 +26,10 @@ class TimersController extends Controller
 
     public function store(TimerRequest $request)
     {
+        $request->merge([
+            'user_id' => auth()->id(),
+            'workspace_id' => auth()->user()->workspaces()->default()->first()->id
+        ]);
         Timer::create($request->validated());
 
         return to_route('timer.index');
