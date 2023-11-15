@@ -2,7 +2,6 @@
 import {useForm, usePage} from '@inertiajs/vue3';
 import {computed, reactive, onMounted, onBeforeMount, ref, watch} from 'vue';
 import {PauseIcon, PlayIcon, StopCircleIcon} from '@heroicons/vue/24/solid';
-import moment from 'moment';
 
 const page = usePage();
 
@@ -68,9 +67,6 @@ const stop = () => {
   form.post(route('timer.store'), {
     onFinish: () => form.reset(),
   });
-
-
-
 }
 
 onBeforeMount(() => {
@@ -98,22 +94,19 @@ onBeforeMount(() => {
           <input
             class="rounded-md p-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm"
             :class="{'border-red-500': error}"
+            :placeholder="error ? 'This field is required' : 'Title'"
             type="text" name="title" v-model="form.title">
-
-          <span v-show="error" class="text-red-500 font-extralight text-sm">
-          Title field is required
-        </span>
         </div>
 
-        <div class="w-24 p-1">
+        <div class="w-26 p-1">
           {{ formatTime(hours) }} : {{ formatTime(minutes) }} : {{ formatTime(seconds) }}
         </div>
 
         <div>
-          <PlayIcon @click="start" v-if="!form.started_at" class="h-5 cursor-pointer"/>
+          <PlayIcon @click="start" :disabled="form.processing" v-if="!form.started_at" class="h-5 cursor-pointer"/>
 
           <div v-else class="flex">
-            <button type="submit">
+            <button type="submit" :disabled="form.processing">
               <StopCircleIcon class="h-5 cursor-pointer"/>
             </button>
           </div>

@@ -18,7 +18,7 @@ defineProps({
   <Head title="Timer"></Head>
   <AuthenticatedLayout>
     <template #breadcrumbs>
-      <div>{{ $page.props.auth.default_workspace.name }} </div>
+      <div>{{ $page.props.auth.default_workspace.name }}</div>
       <ChevronRightIcon class="h-3 text-gray-500"/>
       <div>Timer</div>
     </template>
@@ -26,21 +26,23 @@ defineProps({
     <div>
       <CreateForm></CreateForm>
 
-<!--      <TableLayout>-->
-<!--        <template #head>-->
-<!--          <tr>-->
-<!--            <th class="p-3">Title</th>-->
-<!--            <th class="p-3">Created At</th>-->
-<!--          </tr>-->
-<!--        </template>-->
+      <TableLayout>
+        <template #head>
+          <tr>
+            <th class="p-3">Title</th>
+            <th class="p-3">Hours</th>
+          </tr>
+        </template>
 
-<!--        <template #body>-->
-<!--          <tr>-->
-<!--            <td class="p-3">1</td>-->
-<!--            <td class="p-3">2022-12-30</td>-->
-<!--          </tr>-->
-<!--        </template>-->
-<!--      </TableLayout>-->
+        <template #body>
+          <tr v-for="timer in timers">
+            <td class="p-3">{{ timer.title }}</td>
+            <td class="p-3">
+              {{ timer.difference_time }}
+            </td>
+          </tr>
+        </template>
+      </TableLayout>
     </div>
   </AuthenticatedLayout>
 </template>
