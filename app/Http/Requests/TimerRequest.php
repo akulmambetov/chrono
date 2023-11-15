@@ -12,7 +12,8 @@ class TimerRequest extends FormRequest
             'title' => 'required|string',
             'user_id' => 'required',
             'workspace_id' => 'required',
-            'started_at' => 'required|date'
+            'started_at' => 'required|date',
+            'stopped_at' => 'required|date'
         ];
     }
 
