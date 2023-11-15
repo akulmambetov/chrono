@@ -1,18 +1,41 @@
 <script setup>
-import {useForm} from '@inertiajs/vue3';
-import {computed, onMounted, onBeforeUnmount, ref} from 'vue';
+import {useForm, usePage} from '@inertiajs/vue3';
+import {computed, reactive, onMounted, onBeforeMount, ref, watch} from 'vue';
 import {PauseIcon, PlayIcon, StopCircleIcon} from '@heroicons/vue/24/solid';
 import moment from 'moment';
 
+const page = usePage();
+
 const form = useForm({
-  title: '',
-  started_at: '',
-  stopped_at: '',
-  time: null,
-  intervalId: null
+  title: null,
+  started_at: null,
+  stopped_at: null,
+  intervalId: null,
+  user_id: page.props.auth.user.id,
+  workspace_id: page.props.auth.default_workspace.id,
+  loaded: false
 });
 
+const hours = ref(0);
+const minutes = ref(0);
+const seconds = ref(0);
+
 const error = ref(false);
+
+const formatTime = (value) => {
+  return value.toString().padStart(2, '0');
+};
+
+const updateDifferences = () => {
+  const startDate = new Date(form.started_at);
+  const endDate = new Date();
+
+  const timeDifference = endDate - startDate;
+
+  hours.value = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  minutes.value = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+  seconds.value = Math.floor((timeDifference % (1000 * 60)) / 1000);
+};
 
 const start = () => {
 
@@ -26,10 +49,7 @@ const start = () => {
 
   form.started_at = new Date();
 
-
-  form.intervalId = setInterval(() => {
-    form.time += 1;
-  }, 1000);
+  form.intervalId = setInterval(updateDifferences, 1000);
 
   localStorage.setItem('timer', JSON.stringify(form));
 };
@@ -37,20 +57,34 @@ const start = () => {
 const stop = () => {
   form.stopped_at = new Date();
 
-  error.value = false;
+  hours.value = 0;
+  minutes.value = 0;
+  seconds.value = 0;
 
   clearInterval(form.intervalId);
+
+  localStorage.clear();
 
   form.post(route('timer.store'), {
     onFinish: () => form.reset(),
   });
+
+
+
 }
 
-const refresh = () => {
-}
+onBeforeMount(() => {
+  if (localStorage.getItem('timer') !== null) {
+    let timer = JSON.parse(localStorage.getItem('timer'));
 
-onMounted(() => {
-  window.addEventListener('beforeunload', refresh);
+
+    form.started_at = new Date(timer.started_at);
+    form.title = timer.title;
+
+    updateDifferences();
+
+    form.intervalId = setInterval(updateDifferences, 1000);
+  }
 })
 
 
@@ -71,8 +105,8 @@ onMounted(() => {
         </span>
         </div>
 
-        <div v-show="form.time">
-          {{ form.time }}
+        <div class="w-24 p-1">
+          {{ formatTime(hours) }} : {{ formatTime(minutes) }} : {{ formatTime(seconds) }}
         </div>
 
         <div>

@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Timer extends Model
 {
+    protected $guarded = ['id'];
+
+    protected $casts = [
+      'started_at' => 'datetime',
+      'stopped_at' => 'datetime'
+    ];
 
     public function scopeAssociated(Builder $query):void
     {
