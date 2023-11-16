@@ -16,6 +16,7 @@ defineProps({
 
 <template>
   <Head title="Timer"></Head>
+
   <AuthenticatedLayout>
     <template #breadcrumbs>
       <div>{{ $page.props.auth.default_workspace.name }}</div>
