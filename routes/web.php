@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IntegrationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TimersController;
 use App\Http\Controllers\WorkspacesController;
@@ -32,6 +33,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('workspaces', WorkspacesController::class);
     Route::resource('timer', TimersController::class);
+    Route::get('integrations', [IntegrationController::class, 'index'])->name('integration.index');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])

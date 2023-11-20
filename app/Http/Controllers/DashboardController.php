@@ -9,8 +9,8 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        $workspace = $request->user()->workspaces()->default()->first();
+        $workspaces = $request->user()->workspaces;
 
-        return Inertia::render('Dashboard', $workspace);
+        return Inertia::render('Dashboard', compact('workspaces'));
     }
 }

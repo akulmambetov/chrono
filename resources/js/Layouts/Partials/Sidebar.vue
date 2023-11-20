@@ -30,7 +30,7 @@ const emitSideBar = () => {
     <div v-show="showSideBar" class="max-w-7xl w-64 bg-gray-200 border-r h-full fixed left-0 flex flex-col">
       <div class="px-4 h-12 flex justify-between items-center">
         <div class="rounded cursor-pointer p-2 hover:bg-gray-300 content-center">
-          <Link :href="route('home')">
+          <Link :href="route('dashboard')">
             <ApplicationLogo class="h-5"></ApplicationLogo>
           </Link>
         </div>
@@ -51,6 +51,7 @@ const emitSideBar = () => {
 
               <template #content>
                 <DropdownLink :href="route('profile.edit')"> Profile</DropdownLink>
+                <DropdownLink :href="route('integration.index')">Integrations</DropdownLink>
                 <DropdownLink :href="route('logout')" method="post" as="button">
                   Log Out
                 </DropdownLink>
