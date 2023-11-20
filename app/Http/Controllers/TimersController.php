@@ -10,7 +10,8 @@ class TimersController extends Controller
 {
     public function index()
     {
-        $timers = Timer::with('workspace')
+        $timers = Timer::with(['user', 'workspace'])
+            ->defaultWorkspace()
             ->associated()
             ->get();
 

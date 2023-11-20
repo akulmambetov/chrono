@@ -26,6 +26,11 @@ class Timer extends Model
         );
     }
 
+    public function scopeDefaultWorkspace(Builder $query):void
+    {
+        $query->where('workspace_id', auth()->user()->workspaces()->default()->first()->id);
+    }
+
     public function scopeAssociated(Builder $query):void
     {
         $query->where('user_id', auth()->id());
