@@ -30,6 +30,10 @@ class WorkspacesController extends Controller
 
         $validated['user_id'] = $request->user()->id;
 
+        if ($request->user()->workspaces->isEmpty()) {
+            $validated['default'] = true;
+        }
+
         Workspace::create($validated);
 
         return to_route('workspaces.index');
