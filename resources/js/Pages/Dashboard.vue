@@ -32,23 +32,29 @@ const submit = () => {
       <div>Dashboard</div>
     </template>
 
-    <span class="text-2xl font-bold">To get started, create a workspace</span>
+    <div class="p-12 border rounded-md text-lg" v-for="workspace in workspaces">
+      {{ workspace.name }}
+    </div>
 
-    <form @submit.prevent="submit">
-      <div class="grid grid-cols-1">
-        <label for="name">Workspace Name <span class="text-red-600">*</span></label>
-        <input class="rounded-md mt-2"
-               id="name" type="text"
-               v-model="form.name"
-               placeholder="Workspace name"
-               required
-               autofocus>
-        <span class="text-sm text-red-600" v-show="form.errors.name">{{ form.errors.name }}</span>
-      </div>
+    <div v-if="!workspaces.length">
+      <span class="text-2xl font-bold">To get started, create a workspace</span>
 
-      <span class="border-b-2"></span>
+      <form @submit.prevent="submit">
+        <div class="grid grid-cols-1">
+          <label for="name">Workspace Name <span class="text-red-600">*</span></label>
+          <input class="rounded-md mt-2"
+                 id="name" type="text"
+                 v-model="form.name"
+                 placeholder="Workspace name"
+                 required
+                 autofocus>
+          <span class="text-sm text-red-600" v-show="form.errors.name">{{ form.errors.name }}</span>
+        </div>
 
-      <PrimaryButton class="mt-2" type="submit">Save</PrimaryButton>
-    </form>
+        <span class="border-b-2"></span>
+
+        <PrimaryButton class="mt-2" type="submit">Save</PrimaryButton>
+      </form>
+    </div>
   </AuthenticatedLayout>
 </template>
