@@ -47,8 +47,6 @@ class WorkspacesController extends Controller
         ]);
     }
 
-    //test commit
-
     public function edit(Workspace $workspace)
     {
     }
