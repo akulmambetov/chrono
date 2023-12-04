@@ -16,7 +16,7 @@ defineProps({
 
   <AuthenticatedLayout>
     <template #breadcrumbs>
-      <div>Workspaces </div>
+      <Link :href="route('workspaces.index')">Workspaces</Link>
       <ChevronRightIcon class="h-3 text-gray-500"/>
       <div>{{ workspace.name }}</div>
     </template>

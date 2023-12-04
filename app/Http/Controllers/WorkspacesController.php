@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Workspace;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class WorkspacesController extends Controller
@@ -56,5 +57,15 @@ class WorkspacesController extends Controller
 
     public function destroy(Workspace $workspace)
     {
+    }
+
+    public function setDefault(Request $request, Workspace $workspace)
+    {
+
+        $request->user()->workspaces()->update([
+            'default' => DB::raw('id = ' . $workspace->id),
+        ]);
+
+        return to_route('workspaces.index');
     }
 }

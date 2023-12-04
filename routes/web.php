@@ -32,6 +32,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('workspaces', WorkspacesController::class);
+    Route::put('workspaces/{workspace}/set-default',
+        [WorkspacesController::class, 'setDefault'])
+        ->name('workspaces.set-default');
     Route::resource('timer', TimersController::class);
     Route::get('integrations', [IntegrationController::class, 'index'])->name('integration.index');
 });

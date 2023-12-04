@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import {Head, useForm} from '@inertiajs/vue3';
+import {Head, useForm, Link} from '@inertiajs/vue3';
 import {ChevronRightIcon} from '@heroicons/vue/24/solid';
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 
@@ -32,9 +32,12 @@ const submit = () => {
       <div>Dashboard</div>
     </template>
 
-    <div class="p-12 border rounded-md text-lg" v-for="workspace in workspaces">
+    <Link
+      v-for="workspace in workspaces"
+      class="p-12 block border rounded-md text-lg"
+      :href="route('workspaces.show', workspace)">
       {{ workspace.name }}
-    </div>
+    </Link>
 
     <div v-if="!workspaces.length">
       <span class="text-2xl font-bold">To get started, create a workspace</span>

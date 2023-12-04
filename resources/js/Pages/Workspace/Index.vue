@@ -9,6 +9,7 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 import Modal from '@/Components/Modal.vue';
 import {Head, Link} from '@inertiajs/vue3';
 import {nextTick, ref} from "vue";
+import MakeDefault from "@/Pages/Workspace/Partials/MakeDefault.vue";
 
 defineProps({
   workspaces: Object
@@ -55,11 +56,10 @@ const closeModal = () => {
           <template #body>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" v-for="workspace in workspaces">
               <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{ workspace.name }}
+                <Link :href="route('workspaces.show', workspace)">{{ workspace.name }}</Link>
               </th>
               <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              <span class="p-1 rounded text-white"
-                    :class="{'bg-green-500': workspace.default, 'bg-red-500': !workspace.default}">{{ workspace.default ? 'Yes' : 'No' }}</span>
+              <MakeDefault :workspace="workspace"></MakeDefault>
               </th>
               <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 Edit
