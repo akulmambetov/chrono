@@ -34,13 +34,14 @@ const setDefault = () => {
 
 <template>
   <div>
-    <span class="p-1 rounded text-white cursor-pointer"
+    <span class="px-5 py-1 rounded text-white cursor-pointer"
           @click="confirmSetDefault"
+          title="Set Default"
           :class="{'bg-green-500': props.workspace.default, 'bg-red-500': !props.workspace.default}">{{
         props.workspace.default ? 'Yes' : 'No'
       }}</span>
 
-    <Modal :show="confirmingSetDefault" @close="closeModal">
+    <Modal v-if="!props.workspace.default" :show="confirmingSetDefault" @close="closeModal">
       <div class="p-6">
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
           Are you sure you want to make this the default project?
@@ -52,6 +53,8 @@ const setDefault = () => {
           <PrimaryButton
             class="ml-3"
             @click="setDefault"
+            :class="{ 'opacity-25': form.processing }"
+            :disabled="form.processing"
           >
             Set Default
           </PrimaryButton>
