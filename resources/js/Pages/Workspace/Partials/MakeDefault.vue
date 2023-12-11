@@ -27,7 +27,8 @@ const closeModal = () => {
 
 const setDefault = () => {
   form.put(route('workspaces.set-default', props.workspace), {
-    onFinish: () => closeModal()
+    onFinish: () => closeModal(),
+    onSuccess: () => closeModal()
   })
 };
 </script>
