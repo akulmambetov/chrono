@@ -16,7 +16,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        WorkspaceCreatedEvent::class => [],
+        WorkspaceCreatedEvent::class => [
+            AttachOwnerToWorkspaceListener::class
+        ],
 
         UserRegisteredEvent::class => [
 //            CreateWorkspaceListener::class,
