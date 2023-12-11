@@ -27,6 +27,11 @@ class Workspace extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function participants(): HasMany
+    {
+        return $this->hasMany(WorkspaceParticipant::class);
+    }
+
     public function timers(): HasMany
     {
         return $this->hasMany(Timer::class, 'workspace_id');
