@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\UserRegisteredEvent;
+use App\Events\WorkspaceCreatedEvent;
 use App\Listeners\CreateWorkspaceListener;
 use App\Listeners\SendEmailVerificationNotificationListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -15,6 +16,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
+        WorkspaceCreatedEvent::class => [],
+
         UserRegisteredEvent::class => [
 //            CreateWorkspaceListener::class,
             SendEmailVerificationNotificationListener::class,

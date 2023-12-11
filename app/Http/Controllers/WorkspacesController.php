@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\WorkspaceCreatedEvent;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,7 +36,9 @@ class WorkspacesController extends Controller
             $validated['default'] = true;
         }
 
-        Workspace::create($validated);
+        $workspace = Workspace::create($validated);
+
+        WorkspaceCreatedEvent::dispatch($workspace, $request->user());
 
         return to_route('workspaces.index');
     }
