@@ -14,6 +14,7 @@ return new class extends Migration {
                 $table->string('title');
                 $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
                 $table->foreignId('workspace_id')->nullable()->constrained()->nullOnDelete();
+                $table->foreignId('project_id')->nullable()->constrained()->nullOnDelete();
                 $table->timestamp('started_at');
                 $table->timestamp('stopped_at')->nullable();
                 $table->softDeletes();
