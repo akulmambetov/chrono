@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use voku\helper\ASCII;
 
 class Workspace extends Model
 {
@@ -40,7 +39,7 @@ class Workspace extends Model
         return $this->hasMany(Timer::class, 'workspace_id');
     }
 
-    public function setDefault():void
+    public function setDefault(): void
     {
         $this->update(['default' => true]);
     }

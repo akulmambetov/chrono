@@ -21,17 +21,17 @@ class Timer extends Model
     protected function differenceTime(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $this->started_at->diff($this->stopped_at)->format('%H:%I:%S'),
-            set: fn($value) => $value,
+            get: fn ($value) => $this->started_at->diff($this->stopped_at)->format('%H:%I:%S'),
+            set: fn ($value) => $value,
         );
     }
 
-    public function scopeDefaultWorkspace(Builder $query):void
+    public function scopeDefaultWorkspace(Builder $query): void
     {
         $query->where('workspace_id', auth()->user()->workspaces()->default()->first()->id);
     }
 
-    public function scopeAssociated(Builder $query):void
+    public function scopeAssociated(Builder $query): void
     {
         $query->where('user_id', auth()->id());
     }

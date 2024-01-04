@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use Closure;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -48,7 +47,7 @@ class VerifyEmailNotification extends Notification implements ShouldQueue
      */
     protected function buildMailMessage(string $url): MailMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject(Lang::get('Verify Email Address'))
             ->line(Lang::get('Please click the button below to verify your email address.'))
             ->action(Lang::get('Verify Email Address'), $url)

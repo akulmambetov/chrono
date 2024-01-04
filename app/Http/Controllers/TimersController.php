@@ -20,7 +20,7 @@ class TimersController extends Controller
 
     public function create()
     {
-        return Inertia::render('Timer/Create',[
+        return Inertia::render('Timer/Create', [
             'model' => new Timer()
         ]);
     }

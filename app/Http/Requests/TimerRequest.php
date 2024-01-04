@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class TimerRequest extends FormRequest
 {
-
     protected function prepareForValidation()
     {
         $this->mergeIfMissing(

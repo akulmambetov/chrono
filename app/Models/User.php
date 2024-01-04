@@ -64,7 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
      */
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new VerifyEmailNotification);
+        $this->notify(new VerifyEmailNotification());
     }
 
     public function registerMediaConversions(Media $media = null): void

@@ -7,7 +7,6 @@ use App\Models\Role;
 
 class AttachOwnerToWorkspaceListener
 {
-
     /**
      * Handle the event.
      */
