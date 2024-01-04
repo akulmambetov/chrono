@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,6 +11,8 @@ use voku\helper\ASCII;
 
 class Workspace extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['name', 'user_id', 'default'];
 
     public function scopeMine(Builder $query): Builder
