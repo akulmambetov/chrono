@@ -13,7 +13,7 @@ return new class extends Migration {
                 $table->id();
                 $table->string('title');
                 $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-                $table->foreignId('workspace_id')->constrained();
+                $table->foreignId('workspace_id')->nullable()->constrained()->nullOnDelete();
                 $table->timestamp('started_at');
                 $table->timestamp('stopped_at')->nullable();
                 $table->softDeletes();
